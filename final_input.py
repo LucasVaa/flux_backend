@@ -11,9 +11,9 @@ def run_model(P_input = 0, W_input = 0, PRO_input = 0, M_input = 0):
     # 输入
     # W_input = 1.69
 
-    # PRO_input = 0.175
+    PRO_input = PRO_input/100
 
-    # M_input = 0.0039
+    M_input = M_input/100
 
 
     # 人均垃圾产量
@@ -62,6 +62,6 @@ def run_model(P_input = 0, W_input = 0, PRO_input = 0, M_input = 0):
     #总通量
 
     sum = sum_urban + sum_rural
-    return sum
+    return ('%.2f'%(sum/1000))
 
 
