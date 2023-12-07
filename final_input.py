@@ -11,9 +11,9 @@ def run_model(P_input = 0, W_input = 0, PRO_input = 0, M_input = 0):
     # 输入
     # W_input = 1.69
 
-    # PRO_input = 0.175
+    PRO_input = PRO_input / 100
 
-    # M_input = 0.0039
+    M_input = M_input / 100
 
 
     # 人均垃圾产量
@@ -60,8 +60,11 @@ def run_model(P_input = 0, W_input = 0, PRO_input = 0, M_input = 0):
     print (sum_rural)
 
     #总通量
-
     sum = sum_urban + sum_rural
-    return sum
-
+    
+    if (df['E_rural'].max() > df['E_urban'].max()):
+        max = df['E_rural'].max()
+    else:
+        max = df['E_urban'].max()
+    return {"res": '%.2f'%(sum / 1000) , "max": '%.2f'%(max / 1000) }
 

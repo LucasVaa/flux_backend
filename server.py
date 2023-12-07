@@ -18,5 +18,5 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/run/")
 def run_model(P_input: int = 0, W_input: float = 0, PRO_input: float = 0, M_input: float = 0):
-    return {"res": final_input.run_model(P_input, W_input, PRO_input, M_input)}
+    return final_input.run_model(P_input, W_input, PRO_input, M_input)
 
