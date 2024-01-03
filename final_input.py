@@ -1,5 +1,5 @@
 import pandas as pd
-# df = pd.read_csv('D:/Program Files/RStudio/input_data.csv')
+# df = pd.read_csv('D:/Program Files/RStudio/input_1226data.csv')
 
 
 def run_model(P1_1_input=0,
@@ -24,20 +24,19 @@ def run_model(P1_1_input=0,
 
     # 原常住人口749325.29
     #城镇常住人口数量P1_1
-    df['P1_1_new'] = df['P1_1'] * (P1_1_input / 749325.29)*0.8216714 
+    df['P1_1_new'] = df['P1_1'] * (P1_1_input / 749325.29)
     #城镇候鸟游客
     df['P1_2_new'] = df['P1_2'] * (P1_2_input / 836071.2417)
     #城镇过夜游客
     df['P1_3_new'] = df['P1_3'] * (P1_3_input / 8642008.758)
     #耕地人口数量P2
-    df['P2_new'] = df['P2'] * (P1_1_input/ 749325.29)*0.0225769  
+    df['P2_new'] = df['P2'] * (P1_1_input/ 749325.29)
     #林地人口数量P3
-    df['P3_new'] = df['P3'] * (P1_1_input / 749325.29)*0.1404998 
+    df['P3_new'] = df['P3'] * (P1_1_input / 749325.29)
     #草地人口数量P4
-    df['P4_new'] = df['P4'] * (P1_1_input / 749325.29)*0.0152178 
+    df['P4_new'] = df['P4'] * (P1_1_input / 749325.29)
     #裸地人口数量P5
-    df['P5_new'] = df['P5'] * (P1_1_input / 749325.29)*0.0000340   
-    
+    df['P5_new'] = df['P5'] * (P1_1_input / 749325.29)
     #人均垃圾产生量W
     #城市垃圾产生量
     df['W_urban_new'] = W_input 
@@ -344,11 +343,11 @@ def run_model(P1_1_input=0,
         df['PRO_else_new'] * df['M_else_new'] * df['RR5'] * 366
     sum_ER_P5 = df['ER_P5'].sum()
 
-    # 总ER
+    # 总Enter River
     sum_ER = sum_ER_P1_1 + sum_ER_P1_2 + sum_ER_P1_3 + sum_ER_P2 + sum_ER_P3 + sum_ER_P4 + sum_ER_P5
 
 
-    # TOD
+    # Terrestrial leakage& Open-pit burning& Dumpsites
     sum_TOD = sum_MPW - sum_ER
 
     # Enter into sea
@@ -358,7 +357,7 @@ def run_model(P1_1_input=0,
     sum_S = sum_ER - sum_ES
 
     # Recyclable Waste
-    sum_RW = sum_MPW * Re_input
+    sum_RW = sum_PWG * Re_input
 
     # Garbage collection stations in neighborhood
     sum_GCSIN = sum_PWG - sum_MPW - sum_RW
