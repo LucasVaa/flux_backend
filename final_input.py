@@ -10,7 +10,7 @@ def run_model(P1_1_input=0,
               M_input=0,
               Re_input=0,
               I_input=0):
-    df = pd.read_csv('../input_1226.csv')
+    df = pd.read_csv('../input_0214.csv')
      # 输入
     # W_input = 1.69
 
@@ -22,21 +22,22 @@ def run_model(P1_1_input=0,
 
     I_input = I_input / 100
 
-    # 原常住人口749325.29
-    #城镇常住人口数量P1_1
-    df['P1_1_new'] = df['P1_1'] * (P1_1_input / 749325.29)
+    # 原常住人口792757.8
+    
+
+    df['P1_1_new'] = df['P1_1'] * (P1_1_input / 792757.8)
     #城镇候鸟游客
-    df['P1_2_new'] = df['P1_2'] * (P1_2_input / 836071.2417)
+    df['P1_2_new'] = df['P1_2'] * (P1_2_input / 958145.8)
     #城镇过夜游客
-    df['P1_3_new'] = df['P1_3'] * (P1_3_input / 8642008.758)
+    df['P1_3_new'] = df['P1_3'] * (P1_3_input / 6002341)
     #耕地人口数量P2
-    df['P2_new'] = df['P2'] * (P1_1_input/ 749325.29)
+    df['P2_new'] = df['P2'] * (P1_1_input/ 792757.8)
     #林地人口数量P3
-    df['P3_new'] = df['P3'] * (P1_1_input / 749325.29)
+    df['P3_new'] = df['P3'] * (P1_1_input / 792757.8)
     #草地人口数量P4
-    df['P4_new'] = df['P4'] * (P1_1_input / 749325.29)
+    df['P4_new'] = df['P4'] * (P1_1_input / 792757.8)
     #裸地人口数量P5
-    df['P5_new'] = df['P5'] * (P1_1_input / 749325.29)
+    df['P5_new'] = df['P5'] * (P1_1_input / 792757.8)
     #人均垃圾产生量W
     #城市垃圾产生量
     df['W_urban_new'] = W_input 
@@ -65,27 +66,27 @@ def run_model(P1_1_input=0,
     df['E_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31
     df['E_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 29 * 0.035222376 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 29 * 0.28813549 / 0.255543474
     df['E_P1_2_MAR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.082883812 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.146319146 / 0.255543474
     df['E_P1_2_APR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.076134704 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.049097196 / 0.255543474
     df['E_P1_2_MAY'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.051202154 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.029609108 / 0.255543474
     df['E_P1_2_JUN'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.031004341 / 0.180361996 
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.023980634 / 0.255543474 
     df['E_P1_2_JUL'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.025838935 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.020251616 / 0.255543474
     df['E_P1_2_AUG'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.023443393 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.020372161 / 0.255543474
     df['E_P1_2_SEPT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.037741182 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.006317024 / 0.255543474
     df['E_P1_2_OCT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.053456485 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.020060334 / 0.255543474
     df['E_P1_2_NOV'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.133029911 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.045519787 / 0.255543474
     df['E_P1_2_DEC'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.269680708 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 *0.09479403 / 0.255543474
     df['E_P1_2'] = df['E_P1_2_JAN'] + df['E_P1_2_FEB'] + df['E_P1_2_MAR'] + df['E_P1_2_APR']+ df['E_P1_2_MAY'] \
           + df['E_P1_2_JUN'] + df['E_P1_2_JUL'] + df['E_P1_2_AUG'] + df['E_P1_2_SEPT'] + df['E_P1_2_OCT'] + df['E_P1_2_NOV'] \
               + df['E_P1_2_DEC']
@@ -98,27 +99,27 @@ def run_model(P1_1_input=0,
     df['E_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74
     df['E_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.002978496 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.178006256 / 0.166165525
     df['E_P1_3_MAR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.019500007 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.06280382 / 0.166165525
     df['E_P1_3_APR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.035468138 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.033534039 / 0.166165525
     df['E_P1_3_MAY'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.061068597 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.052368763 / 0.166165525
     df['E_P1_3_JUN'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.073545188 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.106990437 / 0.166165525
     df['E_P1_3_JUL'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.098926631 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 *0.128388663 / 0.166165525
     df['E_P1_3_AUG'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.115829512 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.030614807 / 0.166165525
     df['E_P1_3_SEPT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.102086645 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.011645852 / 0.166165525
     df['E_P1_3_OCT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.118580830 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.045719543 / 0.166165525
     df['E_P1_3_NOV'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.139182168 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.067962721 / 0.166165525
     df['E_P1_3_DEC'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.145938491 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.115799574 / 0.166165525
     df['E_P1_3'] = df['E_P1_3_JAN'] + df['E_P1_3_FEB'] + df['E_P1_3_MAR'] + df['E_P1_3_APR']+ df['E_P1_3_MAY'] \
           + df['E_P1_3_JUN'] + df['E_P1_3_JUL'] + df['E_P1_3_AUG'] + df['E_P1_3_SEPT'] + df['E_P1_3_OCT'] + df['E_P1_3_NOV'] \
               + df['E_P1_3_DEC']
@@ -170,27 +171,27 @@ def run_model(P1_1_input=0,
     df['PWG_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new']* 31
     df['PWG_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 29 * 0.035222376 / 0.180361996
+        df['PRO_urban_new'] * 29 * 0.28813549 / 0.255543474
     df['PWG_P1_2_MAR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 31 * 0.082883812 / 0.180361996
+        df['PRO_urban_new'] * 31 * 0.146319146 / 0.255543474
     df['PWG_P1_2_APR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 30 * 0.076134704 / 0.180361996
+        df['PRO_urban_new'] * 30 * 0.049097196 / 0.255543474
     df['PWG_P1_2_MAY'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 31 * 0.051202154 / 0.180361996
+        df['PRO_urban_new'] * 31 * 0.029609108 / 0.255543474
     df['PWG_P1_2_JUN'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 30 * 0.031004341 / 0.180361996 
+        df['PRO_urban_new']* 30 * 0.023980634 / 0.255543474 
     df['PWG_P1_2_JUL'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 31 * 0.025838935 / 0.180361996
+        df['PRO_urban_new']* 31 * 0.020251616 / 0.255543474
     df['PWG_P1_2_AUG'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 31 * 0.023443393 / 0.180361996
+        df['PRO_urban_new']* 31 * 0.020372161 / 0.255543474
     df['PWG_P1_2_SEPT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 30 * 0.037741182 / 0.180361996
+        df['PRO_urban_new']* 30 * 0.006317024 / 0.255543474
     df['PWG_P1_2_OCT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 31 * 0.053456485 / 0.180361996
+        df['PRO_urban_new']* 31 * 0.020060334 / 0.255543474
     df['PWG_P1_2_NOV'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 30 * 0.133029911 / 0.180361996
+        df['PRO_urban_new'] * 30 * 0.045519787 / 0.255543474
     df['PWG_P1_2_DEC'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * 31 * 0.269680708 / 0.180361996
+        df['PRO_urban_new'] * 31 *0.09479403 / 0.255543474
     sum_PWG_P1_2 = df['PWG_P1_2_JAN'].sum() + df['PWG_P1_2_FEB'].sum() + df['PWG_P1_2_MAR'].sum() + df['PWG_P1_2_APR'].sum() + df['PWG_P1_2_MAY'].sum() \
           + df['PWG_P1_2_JUN'].sum() + df['PWG_P1_2_JUL'].sum() + df['PWG_P1_2_AUG'].sum() + df['PWG_P1_2_SEPT'].sum() + df['PWG_P1_2_OCT'].sum() + df['PWG_P1_2_NOV'].sum() \
               + df['PWG_P1_2_DEC'].sum()
@@ -198,27 +199,27 @@ def run_model(P1_1_input=0,
     df['PWG_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * 4.74
     df['PWG_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.002978496 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.178006256 / 0.166165525
     df['PWG_P1_3_MAR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.019500007 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.06280382 / 0.166165525
     df['PWG_P1_3_APR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.035468138 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.033534039 / 0.166165525
     df['PWG_P1_3_MAY'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.061068597 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.052368763 / 0.166165525
     df['PWG_P1_3_JUN'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.073545188 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.106990437 / 0.166165525
     df['PWG_P1_3_JUL'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.098926631 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.128388663 / 0.166165525
     df['PWG_P1_3_AUG'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.115829512 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.030614807 / 0.166165525
     df['PWG_P1_3_SEPT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.102086645 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.011645852 / 0.166165525
     df['PWG_P1_3_OCT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.118580830 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.045719543 / 0.166165525
     df['PWG_P1_3_NOV'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.139182168 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.067962721 / 0.166165525
     df['PWG_P1_3_DEC'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new']* 4.74 * 0.145938491 / 0.087195297
+        df['PRO_urban_new']* 4.74 * 0.115799574 / 0.166165525
     sum_PWG_P1_3 = df['PWG_P1_3_JAN'].sum() + df['PWG_P1_3_FEB'].sum() + df['PWG_P1_3_MAR'].sum() + df['PWG_P1_3_APR'].sum() + df['PWG_P1_3_MAY'].sum() \
           + df['PWG_P1_3_JUN'].sum() + df['PWG_P1_3_JUL'].sum() + df['PWG_P1_3_AUG'].sum() + df['PWG_P1_3_SEPT'].sum() + df['PWG_P1_3_OCT'].sum() + df['PWG_P1_3_NOV'].sum() \
               + df['PWG_P1_3_DEC'].sum()
@@ -262,27 +263,27 @@ def run_model(P1_1_input=0,
     df['ER_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31
     df['ER_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 29 * 0.035222376 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 29 * 0.28813549 / 0.255543474
     df['ER_P1_2_MAR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.082883812 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.146319146 / 0.255543474
     df['ER_P1_2_APR'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.076134704 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.049097196 / 0.255543474
     df['ER_P1_2_MAY'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.051202154 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.029609108 / 0.255543474
     df['ER_P1_2_JUN'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.031004341 / 0.180361996 
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.023980634 / 0.255543474 
     df['ER_P1_2_JUL'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.025838935 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.020251616 / 0.255543474
     df['ER_P1_2_AUG'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.023443393 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.020372161 / 0.255543474
     df['ER_P1_2_SEPT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.037741182 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.006317024 / 0.255543474
     df['ER_P1_2_OCT'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.053456485 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.020060334 / 0.255543474
     df['ER_P1_2_NOV'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.133029911 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 30 * 0.045519787 / 0.255543474
     df['ER_P1_2_DEC'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 * 0.269680708 / 0.180361996
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31 *0.09479403 / 0.255543474
     df['ER_P1_2'] = df['ER_P1_2_JAN'] + df['ER_P1_2_FEB'] + df['ER_P1_2_MAR'] + df['ER_P1_2_APR']+ df['ER_P1_2_MAY'] \
           + df['ER_P1_2_JUN'] + df['ER_P1_2_JUL'] + df['ER_P1_2_AUG'] + df['ER_P1_2_SEPT'] + df['ER_P1_2_OCT'] + df['ER_P1_2_NOV'] \
               + df['ER_P1_2_DEC']
@@ -295,27 +296,27 @@ def run_model(P1_1_input=0,
     df['ER_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74
     df['ER_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.002978496 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.178006256 / 0.166165525
     df['ER_P1_3_MAR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.019500007 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.06280382 / 0.166165525
     df['ER_P1_3_APR'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.035468138 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.033534039 / 0.166165525
     df['ER_P1_3_MAY'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.061068597 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.052368763 / 0.166165525
     df['ER_P1_3_JUN'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.073545188 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.106990437 / 0.166165525
     df['ER_P1_3_JUL'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.098926631 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 *0.128388663 / 0.166165525
     df['ER_P1_3_AUG'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.115829512 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.030614807 / 0.166165525
     df['ER_P1_3_SEPT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.102086645 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.011645852 / 0.166165525
     df['ER_P1_3_OCT'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.118580830 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.045719543 / 0.166165525
     df['ER_P1_3_NOV'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.139182168 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.067962721 / 0.166165525
     df['ER_P1_3_DEC'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.145938491 / 0.087195297
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74 * 0.115799574 / 0.166165525
     df['ER_P1_3'] = df['ER_P1_3_JAN'] + df['ER_P1_3_FEB'] + df['ER_P1_3_MAR'] + df['ER_P1_3_APR']+ df['ER_P1_3_MAY'] \
           + df['ER_P1_3_JUN'] + df['ER_P1_3_JUL'] + df['ER_P1_3_AUG'] + df['ER_P1_3_SEPT'] + df['ER_P1_3_OCT'] + df['ER_P1_3_NOV'] \
               + df['ER_P1_3_DEC']
