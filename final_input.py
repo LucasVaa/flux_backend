@@ -7,7 +7,8 @@ def run_model(P1_1_input=0,
               P1_3_input=0,
               W_input=0,
               PRO_input=0,
-              M_input=0,
+              M_urban_input=0,
+              M_else_input=0,
               Re_input=0,
               I_input=0):
     df = pd.read_csv('../input_0214.csv')
@@ -16,7 +17,9 @@ def run_model(P1_1_input=0,
 
     PRO_input = PRO_input / 100
 
-    M_input = M_input / 100
+    M_urban_input = M_urban_input / 100
+
+    M_else_input = M_else_input / 100
 
     Re_input = Re_input / 100
 
@@ -42,8 +45,7 @@ def run_model(P1_1_input=0,
     #城市垃圾产生量
     df['W_urban_new'] = W_input 
     #其他地域类型垃圾产生量
-    df['W_else_new'] = 0.55 * W_input / 1.69 
-
+    df['W_else_new'] =  W_input/1.69*0.55
     #塑料垃圾占比PRO
     #城市塑料垃圾占比
     df['PRO_urban_new'] = PRO_input 
@@ -52,17 +54,18 @@ def run_model(P1_1_input=0,
 
     #管理不当垃圾比例M
     #城市垃圾管理不当比例
-    df['M_urban_new'] = M_input 
+    df['M_urban_new'] = M_urban_input 
     #其他地域类型垃圾管理不当比例
-    df['M_else_new'] = 0.1324 * M_input / 0.0039 
+    df['M_else_new'] = M_else_input 
+    
 
     #塑料入海通量
-    #城市常驻
+    #城市常驻人口入海通量
     df['E_P1_1'] = df['P1_1_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 366
     sum_E_P1_1 = df['E_P1_1'].sum()
 
-    #城市候鸟
+    #城市候鸟人口入海通量
     df['E_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31
     df['E_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
@@ -81,12 +84,13 @@ def run_model(P1_1_input=0,
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.020372161 / 0.255543474
     df['E_P1_2_SEPT'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.006317024 / 0.255543474
+    
     df['E_P1_2_OCT'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.020060334 / 0.255543474
     df['E_P1_2_NOV'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 30 * 0.045519787 / 0.255543474
     df['E_P1_2_DEC'] = df['P1_2_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 *0.09479403 / 0.255543474
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 31 * 0.09479403 / 0.255543474
     df['E_P1_2'] = df['E_P1_2_JAN'] + df['E_P1_2_FEB'] + df['E_P1_2_MAR'] + df['E_P1_2_APR']+ df['E_P1_2_MAY'] \
           + df['E_P1_2_JUN'] + df['E_P1_2_JUL'] + df['E_P1_2_AUG'] + df['E_P1_2_SEPT'] + df['E_P1_2_OCT'] + df['E_P1_2_NOV'] \
               + df['E_P1_2_DEC']
@@ -95,7 +99,7 @@ def run_model(P1_1_input=0,
               + df['E_P1_2_DEC'].sum()
 
     
-    #城市过夜 (过夜游客每月平均停留时长为4.74天)
+    #城市过夜人口入海通量 (过夜游客每月平均停留时长为4.74天)
     df['E_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74
     df['E_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
@@ -109,7 +113,7 @@ def run_model(P1_1_input=0,
     df['E_P1_3_JUN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.106990437 / 0.166165525
     df['E_P1_3_JUL'] = df['P1_3_new'] * df['W_urban_new'] * \
-        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 *0.128388663 / 0.166165525
+        df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.128388663 / 0.166165525
     df['E_P1_3_AUG'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RO1'] * 4.74 * 0.030614807 / 0.166165525
     df['E_P1_3_SEPT'] = df['P1_3_new'] * df['W_urban_new'] * \
@@ -127,30 +131,30 @@ def run_model(P1_1_input=0,
           + df['E_P1_3_JUN'].sum() + df['E_P1_3_JUL'].sum() + df['E_P1_3_AUG'].sum() + df['E_P1_3_SEPT'].sum() + df['E_P1_3_OCT'].sum() + df['E_P1_3_NOV'].sum() \
               + df['E_P1_3_DEC'].sum()
 
-    #城市总
+    #城市总人口入海通量
     df['E_P1'] = df['E_P1_1'] + df['E_P1_2'] + df['E_P1_3']
 
-    #耕地
+    #耕地人口入海通量
     df['E_P2'] = df['P2_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RO2'] * 366
     sum_E_P2 = df['E_P2'].sum()  
     
-    #林地
+    #林地人口入海通量
     df['E_P3'] = df['P3_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RO3'] * 366
     sum_E_P3 = df['E_P3'].sum()
 
-    #草地
+    #草地人口入海通量
     df['E_P4'] = df['P4_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RO4'] * 366
     sum_E_P4 = df['E_P4'].sum()
 
-    #裸地
+    #裸地人口入海通量
     df['E_P5'] = df['P5_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RO5'] * 366
     sum_E_P5 = df['E_P5'].sum()
 
-    # 总通量
+    # 总入海通量
     sum = sum_E_P1_1 + sum_E_P1_2 + sum_E_P1_3 + sum_E_P2 + sum_E_P3 + sum_E_P4 + sum_E_P5
 
     #图例用
@@ -163,11 +167,11 @@ def run_model(P1_1_input=0,
 
 
     # Plastic waste generation总塑料垃圾
-    #城市常驻
+    #城市常驻人口产生塑料垃圾量
     df['PWG_P1_1'] = df['P1_1_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * 366
     sum_PWG_P1_1 = df['PWG_P1_1'].sum()
-    #城市候鸟
+    #城市候鸟人口产生塑料垃圾量
     df['PWG_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new']* 31
     df['PWG_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
@@ -195,7 +199,7 @@ def run_model(P1_1_input=0,
     sum_PWG_P1_2 = df['PWG_P1_2_JAN'].sum() + df['PWG_P1_2_FEB'].sum() + df['PWG_P1_2_MAR'].sum() + df['PWG_P1_2_APR'].sum() + df['PWG_P1_2_MAY'].sum() \
           + df['PWG_P1_2_JUN'].sum() + df['PWG_P1_2_JUL'].sum() + df['PWG_P1_2_AUG'].sum() + df['PWG_P1_2_SEPT'].sum() + df['PWG_P1_2_OCT'].sum() + df['PWG_P1_2_NOV'].sum() \
               + df['PWG_P1_2_DEC'].sum()
-    #城市过夜 (过夜游客每月平均停留时长为4.74天)
+    #城市过夜人口产生塑料垃圾量 (过夜游客每月平均停留时长为4.74天)
     df['PWG_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * 4.74
     df['PWG_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
@@ -223,43 +227,43 @@ def run_model(P1_1_input=0,
     sum_PWG_P1_3 = df['PWG_P1_3_JAN'].sum() + df['PWG_P1_3_FEB'].sum() + df['PWG_P1_3_MAR'].sum() + df['PWG_P1_3_APR'].sum() + df['PWG_P1_3_MAY'].sum() \
           + df['PWG_P1_3_JUN'].sum() + df['PWG_P1_3_JUL'].sum() + df['PWG_P1_3_AUG'].sum() + df['PWG_P1_3_SEPT'].sum() + df['PWG_P1_3_OCT'].sum() + df['PWG_P1_3_NOV'].sum() \
               + df['PWG_P1_3_DEC'].sum()
-    #耕地
+    #耕地人口产生塑料垃圾量
     df['PWG_P2'] = df['P2_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * 366
     sum_PWG_P2 = df['PWG_P2'].sum()   
-    #林地
+    #林地人口产生塑料垃圾量
     df['PWG_P3'] = df['P3_new'] * df['W_else_new'] * \
         df['PRO_else_new']  * 366
     sum_PWG_P3 = df['PWG_P3'].sum()
-    #草地
+    #草地人口产生塑料垃圾量
     df['PWG_P4'] = df['P4_new'] * df['W_else_new'] * \
         df['PRO_else_new']  * 366
     sum_PWG_P4 = df['PWG_P4'].sum()
-    #裸地
+    #裸地人口产生塑料垃圾量
     df['PWG_P5'] = df['P5_new'] * df['W_else_new'] * \
         df['PRO_else_new']  * 366
     sum_PWG_P5 = df['PWG_P5'].sum()
 
     sum_PWG = sum_PWG_P1_1 + sum_PWG_P1_2 + sum_PWG_P1_3 + sum_PWG_P2 + sum_PWG_P3 + sum_PWG_P4 + sum_PWG_P5
 
-    # Mismanaged plastic waste管理不当
-    sum_MPW_P1_1 = sum_PWG_P1_1 * M_input
-    sum_MPW_P1_2 = sum_PWG_P1_2 * M_input
-    sum_MPW_P1_3 = sum_PWG_P1_3 * M_input
-    sum_MPW_P2 = sum_PWG_P2 * 0.1324 * M_input / 0.0039 
-    sum_MPW_P3 = sum_PWG_P3 * 0.1324 * M_input / 0.0039 
-    sum_MPW_P4 = sum_PWG_P4 * 0.1324 * M_input / 0.0039 
-    sum_MPW_P5 = sum_PWG_P5 * 0.1324 * M_input / 0.0039 
+    # Mismanaged plastic waste管理不当塑料垃圾量
+    sum_MPW_P1_1 = sum_PWG_P1_1 * M_urban_input
+    sum_MPW_P1_2 = sum_PWG_P1_2 * M_urban_input
+    sum_MPW_P1_3 = sum_PWG_P1_3 * M_urban_input
+    sum_MPW_P2 = sum_PWG_P2 * M_else_input
+    sum_MPW_P3 = sum_PWG_P3 * M_else_input
+    sum_MPW_P4 = sum_PWG_P4 * M_else_input
+    sum_MPW_P5 = sum_PWG_P5 * M_else_input
 
     sum_MPW = sum_MPW_P1_1 + sum_MPW_P1_2 + sum_MPW_P1_3 + sum_MPW_P2 + sum_MPW_P3 + sum_MPW_P4 + sum_MPW_P5
 
     # Enter into river入河
-    #城市常驻
+    #城市常驻人口入河通量
     df['ER_P1_1'] = df['P1_1_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 366
     sum_ER_P1_1 = df['ER_P1_1'].sum()
 
-    #城市候鸟
+    #城市候鸟人口入河通量
     df['ER_P1_2_JAN'] = df['P1_2_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 31
     df['ER_P1_2_FEB'] = df['P1_2_new'] * df['W_urban_new'] * \
@@ -292,7 +296,7 @@ def run_model(P1_1_input=0,
               + df['ER_P1_2_DEC'].sum()
 
     
-    #城市过夜 (过夜游客每月平均停留时长为4.74天)
+    #城市过夜人口入河通量 (过夜游客每月平均停留时长为4.74天)
     df['ER_P1_3_JAN'] = df['P1_3_new'] * df['W_urban_new'] * \
         df['PRO_urban_new'] * df['M_urban_new'] * df['RR1'] * 4.74
     df['ER_P1_3_FEB'] = df['P1_3_new'] * df['W_urban_new'] * \
@@ -324,27 +328,27 @@ def run_model(P1_1_input=0,
           + df['ER_P1_3_JUN'].sum() + df['ER_P1_3_JUL'].sum() + df['ER_P1_3_AUG'].sum() + df['ER_P1_3_SEPT'].sum() + df['ER_P1_3_OCT'].sum() + df['ER_P1_3_NOV'].sum() \
               + df['ER_P1_3_DEC'].sum()
 
-    #耕地
+    #耕地人口入河通量
     df['ER_P2'] = df['P2_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RR2'] * 366
     sum_ER_P2 = df['ER_P2'].sum()  
     
-    #林地
+    #林地人口入河通量
     df['ER_P3'] = df['P3_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RR3'] * 366
     sum_ER_P3 = df['ER_P3'].sum()
 
-    #草地
+    #草地人口入河通量
     df['ER_P4'] = df['P4_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RR4'] * 366
     sum_ER_P4 = df['ER_P4'].sum()
 
-    #裸地
+    #裸地人口入河通量
     df['ER_P5'] = df['P5_new'] * df['W_else_new'] * \
         df['PRO_else_new'] * df['M_else_new'] * df['RR5'] * 366
     sum_ER_P5 = df['ER_P5'].sum()
 
-    # 总Enter River
+    # 总人口入河通量 Enter River
     sum_ER = sum_ER_P1_1 + sum_ER_P1_2 + sum_ER_P1_3 + sum_ER_P2 + sum_ER_P3 + sum_ER_P4 + sum_ER_P5
 
 
